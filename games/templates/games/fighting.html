@@ -1,0 +1,89 @@
+{% extends 'games/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+<div class="container">
+    <h1>Fighting</h1>
+    <div class="card-container">
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+                <img src="{% static '/img/TEKKEN-8.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Tekken 8</h5>
+                    <p class="card-text">PREPARATE PARA EL SIGUIENTE CAPITULO DE LA LEGENDARIA SAGA DE JUEGOS DE
+                        LUCHA, TEKKEN 8.
+                        Diseños de personajes completamente nuevos. Modelos sofisticados y altamente detallados
+                        creados desde cero, y gráficos de alta fidelidad que sobrepasan los límites del hardware de
+                        última generación y añaden realismo a los emblemáticos combates de TEKKEN. Entornos vivos y
+                        escenarios destructibles se combinan para generar una extraordinaria sensación de inmersión
+                        y dar lugar a la experiencia de juego definitiva.
+                    </p>
+                    <div class="mt-auto"></div>
+                    <p>Precio: CLP$ 44.990 </p>
+                    <a href="#" class="btn btn-primary btn-comprar" data-bs-toggle="modal"
+                        data-bs-target="#compraExitosaModal">Comprar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100">
+                <img src="{% static '/img/GUILTY-GEAR-STRIVE.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">GUILTY GEAR -STRIVE-</h5>
+                    <p class="card-text">¡Descubre el olor del juego con Guilty Gear -Strive-! Sumérgete en nuevas
+                        mecánicas de juego diseñadas para ser simples y acogedoras para los recién llegados a los
+                        juegos de lucha, pero profundas y creativas para los veteranos. ¡Monta el Fire hacia un
+                        futuro alternativo inspirado en el heavy metal lleno de acción, estilo y diversión
+                        desmesurados! ¡Flameante!
+
+                        “Guilty Gear -Strive-“ es la última entrega de la aclamada franquicia de juegos de lucha
+                        Guilty Gear. Creado por Daisuke Ishiwatari y desarrollado por Arc System Works, “Guilty Gear
+                        -Strive-“ mantiene la reputación de la serie por una banda sonora de alto octanaje,
+                        innovadores gráficos híbridos 2D/3D con sombreado de celdas y una jugabilidad intensa y
+                        gratificante.​</p>
+                    <div class="mt-auto"></div>
+                    <p>Precio: CLP$ 30.000 </p>
+                    <a href="#" class="btn btn-primary btn-comprar" data-bs-toggle="modal"
+                        data-bs-target="#compraExitosaModal">Comprar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="compraExitosaModal" tabindex="-1" aria-labelledby="compraExitosaModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="compraExitosaModalLabel">Compra Exitosa</h5>
+                <a href="fighting.html" type="button" class="btn-close btn-primary" aria-label="Close"></a>
+            </div>
+            <div class="modal-body">
+                ¡Tu compra ha sido exitosa!
+            </div>
+            <div class="modal-footer">
+                <a href="fighting.html" class="btn btn-primary">Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const botonesComprar = document.querySelectorAll('.btn-comprar');
+        botonesComprar.forEach(boton => {
+            boton.addEventListener('click', function () {
+                // Muestra el modal
+                var modal = new bootstrap.Modal(document.getElementById('compraExitosaModal'));
+                modal.show();
+            });
+        });
+    });
+</script>
+{% endblock %}

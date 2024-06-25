@@ -1,0 +1,26 @@
+{% extends 'games/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Inicio de Sesión</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="email">
+        </div>
+        <div class="mb-3">
+            <label for="clave" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" name="clave" id="clave">
+
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

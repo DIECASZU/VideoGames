@@ -1,0 +1,158 @@
+{% extends 'games/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+<div class="container">
+  <h1 class="text-center">Formulario de Registro</h1>
+  <div class="row justify-content-center align-items-center">
+
+    <div class="card">
+      <div class="card-body text-center">
+        <form id="formulario_registro" action="" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="" class="form-label">Run</label>
+            <input type="text" class="form-control" name="nombre" id="nombre">
+            <small class="text-danger" id="nombre-error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="" class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" name="nombre" id="nombre">
+            <small class="text-danger" id="nombre-error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" name="fechanacimiento" id="fechanacimiento">
+            <small class="text-danger" id="fechanacimiento-error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="" class="form-label">Dirección</label>
+            <input type="text" class="form-control" name="direccion" id="direccion">
+            <small class="text-danger" id="direccion-error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="email">
+            <small class="text-danger" id="email-error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" name="clave" id="clave">
+            <small class="text-danger" id="clave-error"></small>
+          </div>
+
+          <div class="mb-3">
+            <label for="" class="form-label">Repetir Contraseña</label>
+            <input type="password" class="form-control" name="clave-repetida" id="clave-repetida">
+            <small class="text-danger" id="clave-repetida-error"></small>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <br>
+            <button type="reset" class="btn btn-primary">Limpiar</button>
+
+
+          </div>
+        </form>
+
+        {{mensaje}}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+
+
+<script>
+  $(document).ready(function () {
+    $('#formulario_registro').submit(function (evento) {
+      evento.preventDefault();
+
+      $('#run-error').text('');
+      $('#nombre-error').text('');
+      $('#fechanacimiento-error').text('');
+      $('#email-error').text('');
+      $('#username-error').text('');
+      $('#clave-error').text('');
+      $('#clave-repetida-error').text('');
+
+      if ($('#run').val() === '') {
+        $('#run-error').text('Por favor, ingrese run válido');
+        return;
+      }
+
+      if ($('#nombre').val() === '') {
+        $('#nombre-error').text('Por favor, ingrese un nombre válido');
+        return;
+      }
+
+      if ($('#fechanacimiento').val() === '') {
+        $('#fechanacimiento-error').text('Por favor, ingrese una fecha válida');
+        return;
+      }
+
+      // Calcular la edad a partir de la fecha de nacimiento
+      var fechaNacimiento = new Date($('#fechanacimiento').val());
+      var hoy = new Date();
+      var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+      var mes = hoy.getMonth() - fechaNacimiento.getMonth();
+      if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+        edad--;
+      }
+
+      // Verificar si la edad es menor de 13 años
+      if (edad < 13) {
+        $('#fechanacimiento-error').text('Debe ser mayor de 13 años para registrarse');
+        return;
+      }
+
+      // Validar contraseña
+      var clave = $('#clave').val();
+      var claveRepetida = $('#clave-repetida').val();
+
+      if (clave === '') {
+        $('#clave-error').text('Por favor, ingrese una clave válida');
+        return;
+      }
+
+      if (clave !== claveRepetida) {
+        $('#clave-repetida-error').text('Las contraseñas no coinciden');
+        return;
+      }
+
+      if (!/^(?=.*\d)(?=.*[A-Z]).{6,18}$/.test(clave)) {
+        $('#clave-error').text('La contraseña debe contener al menos un número, una letra en mayúscula y tener entre 6 y 18 caracteres');
+        return;
+      }
+
+      if ($('#email').val() === '') {
+        $('#email-error').text('Por favor, ingrese un email válido');
+        return;
+      }
+
+      if ($('#username').val() === '') {
+        $('#username-error').text('Por favor, ingrese un username válido');
+        return;
+      }
+
+      // Si todas las validaciones son exitosas, se envía el formulario
+      this.submit();
+    });
+  });
+</script>
+
+{% endblock %}

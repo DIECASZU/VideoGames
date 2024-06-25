@@ -1,0 +1,78 @@
+{% extends 'games/base.html' %}
+
+{% load static %}
+
+{% block js %}
+{% endblock %}
+
+{% block ccs %}
+{% endblock %}
+
+{% block contenido %}
+
+
+<h1>Categorías</h1>
+<div class="card-container">
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card">
+            <img src="{% static '/img/RPG.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">RPG</h5>
+                <p class="card-text">Rol, Fantasía, Historias Épicas.</p>
+                <a href="{% url 'rpg' %}" class="btn btn-primary">Explorar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card">
+            <img src="{% static '/img/accion.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Survival Horror</h5>
+                <p class="card-text">Supervivencia, Aventuras de acción, Suspenso.</p>
+                <a href="{% url 'survival' %}" class="btn btn-primary">Explorar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card">
+            <img src="{% static '/img/Fighting.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Fighting</h5>
+                <p class="card-text">Combates envolventes, Peleas, Competidores.</p>
+                <a href="{% url 'fighting' %}" class="btn btn-primary">Explorar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card">
+            <img src="{% static '/img/mundo.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">MOBA</h5>
+                <p class="card-text">Multijugador, Online, Estrategia en Tiempo Real</p>
+                <a href="{% url 'moba' %}" class="btn btn-primary">Explorar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card">
+            <img src="{% static '/img/shooter.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Shooter</h5>
+                <p class="card-text">Táctico, FPS, Estrategia.</p>
+                <a href="{% url 'shooter' %}" class="btn btn-primary">Explorar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card">
+            <img src="{% static '/img/Adventure.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Adventure</h5>
+                <p class="card-text">Diviertete en un Mundo.</p>
+                <a href="{% url 'adventure' %}" class="btn btn-primary">Explorar</a>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}
